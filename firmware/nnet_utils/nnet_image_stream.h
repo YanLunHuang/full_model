@@ -71,29 +71,26 @@ void resize_nearest_ss(
 	constexpr unsigned ratio_width = CONFIG_T::new_width / CONFIG_T::width;
 	constexpr unsigned ii = ratio_height * ratio_width;
 	
-	int current_chan = 0;int current_width = 0;
-	int current_chan2 = 0;int current_width2 = 0;
-	
 	data_T data_in_row[CONFIG_T::width][CONFIG_T::n_chan];
 	
 	ImageHeight: for (unsigned h = 0; h < CONFIG_T::height; h++) {
 		#pragma HLS PIPELINE II=ii
-		
-		ReadData: for(unsigned i = 0; i < CONFIG_T::n_chan*CONFIG_T::width ; i++){
-			#pragma HLS UNROLL
-			current_chan = i % CONFIG_T::n_chan;
-			current_width = i / CONFIG_T::n_chan;
-			data_in_row[current_width][current_chan] = image.read();
+		ImageWidth: for (unsigned i = 0; i < CONFIG_T::width; i++) {
+			ReadData: for(unsigned j = 0; j < CONFIG_T::n_chan ; j++){
+				#pragma HLS loop_flatten
+				data_in_row[i][j] = image.read();
+			}
 		}
 		
-		RatioHeight: for (unsigned i = 0; i <ratio_height; i++) {
-			#pragma HLS UNROLL
-			ImageWidth: for (unsigned k = 0; k < CONFIG_T::n_chan*ratio_width*CONFIG_T::width; k++) {
-				#pragma HLS UNROLL
-				current_chan2 = k % CONFIG_T::n_chan;
-				current_width2 = k / (CONFIG_T::n_chan*ratio_width);
-				data_T out_data = data_in_row[current_width2][current_chan2];
-				resized.write(out_data);   
+		ResizeHeight: for (unsigned i = 0; i <ratio_height; i++) {
+			ImageWidth2: for (unsigned l = 0; l < CONFIG_T::width; l++) {
+				ResizeWidth: for (unsigned j = 0; j < ratio_width; j++) {
+					ResizeChan: for (unsigned k = 0; k < CONFIG_T::n_chan; k++) {
+						#pragma HLS loop_flatten
+						data_T out_data = data_in_row[l][k];
+						resized.write(out_data);   
+					}
+				}
 			}
 		}
 	}

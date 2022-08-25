@@ -7,35 +7,63 @@
 source /opt/Xilinx/Vivado/2019.2/scripts/vivado_hls/hls.tcl -notrace
 INFO: Applying HLS Y2K22 patch v1.2 for IP revision
 INFO: [HLS 200-10] Running '/opt/Xilinx/Vivado/2019.2/bin/unwrapped/lnx64.o/vivado_hls'
-INFO: [HLS 200-10] For user 'YL_HUANG' on host 'r7515ed520.EE.NCTU.edu.tw' (Linux_x86_64 version 3.10.0-1160.11.1.el7.x86_64) on Thu Aug 25 12:31:52 CST 2022
+INFO: [HLS 200-10] For user 'YL_HUANG' on host 'r7515ed520.EE.NCTU.edu.tw' (Linux_x86_64 version 3.10.0-1160.11.1.el7.x86_64) on Thu Aug 25 17:18:22 CST 2022
 INFO: [HLS 200-10] On os "CentOS Linux release 7.9.2009 (Core)"
-INFO: [HLS 200-10] In directory '/home/YL_HUANG/8_26/Deepcalo_full_HLS'
+INFO: [HLS 200-10] In directory '/home/YL_HUANG/9_2/forgit/full_model'
 Sourcing Tcl script 'build_prj.tcl'
-INFO: [HLS 200-10] Creating and opening project '/home/YL_HUANG/8_26/Deepcalo_full_HLS/myproject_prj'.
+INFO: [HLS 200-10] Opening project '/home/YL_HUANG/9_2/forgit/full_model/myproject_prj'.
 INFO: [HLS 200-10] Adding design file 'firmware/myproject.cpp' to the project
 INFO: [HLS 200-10] Adding test bench file 'myproject_test.cpp' to the project
 INFO: [HLS 200-10] Adding test bench file 'firmware/weights' to the project
 INFO: [HLS 200-10] Adding test bench file 'tb_data' to the project
-INFO: [HLS 200-10] Creating and opening solution '/home/YL_HUANG/8_26/Deepcalo_full_HLS/myproject_prj/solution1'.
+INFO: [HLS 200-10] Opening solution '/home/YL_HUANG/9_2/forgit/full_model/myproject_prj/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-10] Setting target device to 'xczu9eg-ffvb1156-2-e'
 INFO: [XFORM 203-101] Allowed max sub elements number after partition is 4096.
 INFO: [XFORM 203-1161] The maximum of name length is set into 60.
-INFO: [HLS 200-10] Setting target device to 'xczu9eg-ffvb1156-2-e'
-INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [XFORM 203-101] Allowed max sub elements number after partition is 4096.
+INFO: [XFORM 203-1161] The maximum of name length is set into 60.
 ***** C SIMULATION *****
 INFO: [SIM 211-2] *************** CSIM start ***************
 INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
    Compiling ../../../../myproject_test.cpp in debug mode
-   Compiling ../../../../firmware/myproject.cpp in debug mode
    Generating csim.exe
 Processing input 0
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
 Predictions
 86.7304 
 Quantized predictions
 86.5721 
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
 INFO: Saved inference results to file: tb_data/csim_results.log
 INFO: [SIM 211-1] CSim done with 0 errors.
 INFO: [SIM 211-3] *************** CSIM finish ***************
-***** C SIMULATION COMPLETED IN 0h5m4s *****
+***** C SIMULATION COMPLETED IN 0h1m16s *****
 ***** C/RTL SIMULATION *****
 INFO: [HLS 200-10] Adding test bench file 'myproject_test.cpp' to the project
 ERROR: [COSIM 212-40] C/RTL co-simulation cannot be started, possible causes: 1) Synthesis was not successful; 2) The solution has been reset; 3) Simulation is not running in the solution directory.
@@ -47,4 +75,4 @@ ERROR: [COSIM 212-5] *** C/RTL co-simulation file generation failed. ***
     invoked from within
 "uplevel \#0 [list source $arg] "
 
-INFO: [Common 17-206] Exiting vivado_hls at Thu Aug 25 12:36:59 2022...
+INFO: [Common 17-206] Exiting vivado_hls at Thu Aug 25 17:19:41 2022...

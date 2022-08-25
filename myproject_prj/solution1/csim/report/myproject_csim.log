@@ -1,13 +1,39 @@
 INFO: [SIM 2] *************** CSIM start ***************
 INFO: [SIM 4] CSIM will launch GCC as the compiler.
    Compiling ../../../../myproject_test.cpp in debug mode
-   Compiling ../../../../firmware/myproject.cpp in debug mode
    Generating csim.exe
 Processing input 0
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
 Predictions
 86.7304 
 Quantized predictions
 86.5721 
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
+USE CONV2D LARGE
 INFO: Saved inference results to file: tb_data/csim_results.log
 INFO: [SIM 1] CSim done with 0 errors.
 INFO: [SIM 3] *************** CSIM finish ***************

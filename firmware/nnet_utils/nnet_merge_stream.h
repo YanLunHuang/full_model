@@ -111,7 +111,7 @@ void multiply_ss(
     //assert(input1_T::size == input2_T::size && input1_T::size == res_T::size);
 
     MultiplyLoop: for (int i = 0; i < CONFIG_T::n_elem; i++) {
-        #pragma HLS PIPELINE II=CONFIG_T::reuse_factor
+        #pragma HLS PIPELINE II=1
        
         input1_T in_data1 = data1.read();
         input2_T in_data2 = data2.read();
@@ -433,16 +433,17 @@ void concatenate1d_ss(
 {
     res_T out_data[CONFIG_T::n_elem1_0+CONFIG_T::n_elem2_0];
     ConcatLoop1: for (int i = 0; i < CONFIG_T::n_elem1_0; i++) {
-        #pragma HLS PIPELINE
+        #pragma HLS PIPELINE II=1
         input1_T in_data1 = data1.read();
             out_data[i] = in_data1;
     }
     ConcatLoop2: for (int i = 0; i < CONFIG_T::n_elem2_0; i++) {
-        #pragma HLS PIPELINE
+        #pragma HLS PIPELINE II=1
         input2_T in_data2 = data2.read();
             out_data[CONFIG_T::n_elem1_0 + i] = in_data2;
     }
     OutputLoop: for (int i = 0; i < CONFIG_T::n_elem1_0+CONFIG_T::n_elem2_0; i++) {
+        #pragma HLS PIPELINE II=1
         res.write(out_data[i]);
     }
 }

@@ -88,7 +88,6 @@ void pointwise_conv_1d_cl(
 template<class data_T, size_t SIZE1 , class res_T, size_t SIZE2, typename CONFIG_T>
 void pointwise_conv_1d_cl_ss(
     hls::stream<data_T> &data,
-    //hls::stream<res_T>  res[CONFIG_T::n_filt],
     hls::stream<res_T>  &res,
     typename CONFIG_T::weight_t weights[CONFIG_T::n_chan * CONFIG_T::n_filt],
     typename CONFIG_T::bias_t   biases[CONFIG_T::n_filt])
@@ -107,6 +106,7 @@ void pointwise_conv_1d_cl_ss(
             pointwise_mult_buffer_ss<data_T, SIZE1, res_T, SIZE2, CONFIG_T>(data, res, weights, biases);
         } else {
             for(unsigned i = 0; i < SIZE1; i++){
+                #pragma HLS PIPELINE II=1
                 data.read();
             }
         }

@@ -189,7 +189,7 @@ void pointwise_mult_buffer_ss(
     #pragma HLS ARRAY_PARTITION variable=res complete
 
     InitData: for (int id = 0; id < CONFIG_T::n_chan; id++) {
-        #pragma HLS UNROLL
+        #pragma HLS PIPELINE II=1
         data[id] = data_pack.read();
     }
 
@@ -201,7 +201,7 @@ void pointwise_mult_buffer_ss(
     }
 
     CastLoop: for (unsigned jj = 0; jj < CONFIG_T::n_filt; jj++) {
-        #pragma HLS UNROLL
+        #pragma HLS PIPELINE II=1
         res_T res_pack = res[jj];
         res_stream.write(res_pack);
     }

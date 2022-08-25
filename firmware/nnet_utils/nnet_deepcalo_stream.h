@@ -76,13 +76,14 @@ void film_ss(
 	
 	input2_T in_data2[SIZE2];
 	for (int i = 0; i < SIZE2; i++) {
+		#pragma HLS PIPELINE II=1
 		in_data2[i] = data2.read();
 	}
 	
 	for (int i = 0; i < CONFIG_T::n_inp1/SIZE1; i++) {
 		
 		FilmPack: for (int k = 0; k < SIZE1; k++) {
-			
+			#pragma HLS PIPELINE II=1
 			input1_T in_data1 = data1.read();
 			out_data = in_data1*(in_data2[k]+1) + in_data2[SIZE1+k];
 			res.write(out_data);
@@ -124,16 +125,11 @@ template<class data_T, class res_T, typename CONFIG_T>
 void mask_track_ss(
         hls::stream<data_T> &data,
         hls::stream<res_T> &res) {
-        #pragma HLS PIPELINE II=1
         
+        res_T out_data;
         MaskLoop1: for (unsigned i = 0; i < CONFIG_T::n_in/6; i++) {
-            #pragma HLS UNROLL
-            
-            res_T out_data;
-
+            #pragma HLS PIPELINE II=1
             MaskLoop2: for (unsigned k = 0; k < 6; k++){
-            
-                #pragma HLS UNROLL
                 data_T in_data = data.read();
                 if(in_data==0){
                     out_data = 0;
@@ -181,9 +177,9 @@ void sum1d_ss(
     for (unsigned i = 0; i < SIZE2; i++) out_data[i] = 0;
 
     for (unsigned i = 0; i < CONFIG_T::n_in/SIZE1; i++) {
-        #pragma HLS UNROLL
 
         for (unsigned k = 0; k < SIZE1; k++){
+            #pragma HLS PIPELINE II=1
             data_T in_data = data.read();
                 if (SIZE2 == 1) 
                     out_data[0] = out_data[0] + in_data;
@@ -192,7 +188,7 @@ void sum1d_ss(
         }
     }
     for (unsigned i = 0; i < SIZE2; i++){
-        #pragma HLS UNROLL
+        #pragma HLS PIPELINE II=1
         res.write(out_data[i]);
     }
 }
@@ -246,7 +242,7 @@ void slice_tensor1d_ss(
         
 
 	for (unsigned i = 0; i < CONFIG_T::n_in; i++) {
-        #pragma HLS UNROLL
+        #pragma HLS PIPELINE II=1
 		data_T in_data = data.read();
 		if ( i >=  CONFIG_T::start && i < CONFIG_T::end ){
 			res_T out_data = in_data;
