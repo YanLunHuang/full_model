@@ -23,7 +23,16 @@
 
 void myproject(
     hls::stream<input29_t> &em_barrel, hls::stream<input13_t> &scalars, hls::stream<input_t> &tracks,
-    hls::stream<result_t> &layer102_out
+    hls::stream<result_t> &layer102_out,
+	weight25_t w25[196608],
+	weight30_t w30[524288],
+	weight38_t w38[1015808],
+	weight69_t w69[73728],
+	weight76_t w76[147456],
+	weight81_t w81[294912],
+	weight87_t w87[589824],
+	weight92_t w92[589824],
+	weight96_t w96[65536]
 ) {
 
     //hls-fpga-machine-learning insert IO
@@ -48,11 +57,11 @@ void myproject(
         nnet::load_weights_from_txt<model_default_t, 256>(b19, "b19.txt");
         nnet::load_weights_from_txt<weight20_t, 16384>(w20, "w20.txt");
         nnet::load_weights_from_txt<bias20_t, 128>(b20, "b20.txt");
-        nnet::load_weights_from_txt<weight25_t, 196608>(w25, "w25.txt");
+        //nnet::load_weights_from_txt<weight25_t, 196608>(w25, "w25.txt");
         nnet::load_weights_from_txt<bias25_t, 512>(b25, "b25.txt");
         nnet::load_weights_from_txt<model_default_t, 512>(s27, "s27.txt");
         nnet::load_weights_from_txt<model_default_t, 512>(b27, "b27.txt");
-        nnet::load_weights_from_txt<weight30_t, 524288>(w30, "w30.txt");
+        //nnet::load_weights_from_txt<weight30_t, 524288>(w30, "w30.txt");
         nnet::load_weights_from_txt<bias30_t, 1024>(b30, "b30.txt");
         nnet::load_weights_from_txt<model_default_t, 1024>(s33, "s33.txt");
         nnet::load_weights_from_txt<model_default_t, 1024>(b33, "b33.txt");
@@ -60,7 +69,7 @@ void myproject(
         nnet::load_weights_from_txt<model_default_t, 4>(b34, "b34.txt");
         nnet::load_weights_from_txt<weight36_t, 1600>(w36, "w36.txt");
         nnet::load_weights_from_txt<bias36_t, 16>(b36, "b36.txt");
-        nnet::load_weights_from_txt<weight38_t, 1015808>(w38, "w38.txt");
+        //nnet::load_weights_from_txt<weight38_t, 1015808>(w38, "w38.txt");
         nnet::load_weights_from_txt<bias38_t, 992>(b38, "b38.txt");
         nnet::load_weights_from_txt<model_default_t, 16>(s40, "s40.txt");
         nnet::load_weights_from_txt<model_default_t, 16>(b40, "b40.txt");
@@ -80,27 +89,27 @@ void myproject(
         nnet::load_weights_from_txt<bias64_t, 64>(b64, "b64.txt");
         nnet::load_weights_from_txt<model_default_t, 64>(s66, "s66.txt");
         nnet::load_weights_from_txt<model_default_t, 64>(b66, "b66.txt");
-        nnet::load_weights_from_txt<weight69_t, 73728>(w69, "w69.txt");
+        //nnet::load_weights_from_txt<weight69_t, 73728>(w69, "w69.txt");
         nnet::load_weights_from_txt<bias69_t, 128>(b69, "b69.txt");
         nnet::load_weights_from_txt<model_default_t, 128>(s72, "s72.txt");
         nnet::load_weights_from_txt<model_default_t, 128>(b72, "b72.txt");
-        nnet::load_weights_from_txt<weight76_t, 147456>(w76, "w76.txt");
+        //nnet::load_weights_from_txt<weight76_t, 147456>(w76, "w76.txt");
         nnet::load_weights_from_txt<bias76_t, 128>(b76, "b76.txt");
         nnet::load_weights_from_txt<model_default_t, 128>(s78, "s78.txt");
         nnet::load_weights_from_txt<model_default_t, 128>(b78, "b78.txt");
-        nnet::load_weights_from_txt<weight81_t, 294912>(w81, "w81.txt");
+        //nnet::load_weights_from_txt<weight81_t, 294912>(w81, "w81.txt");
         nnet::load_weights_from_txt<bias81_t, 256>(b81, "b81.txt");
         nnet::load_weights_from_txt<model_default_t, 256>(s83, "s83.txt");
         nnet::load_weights_from_txt<model_default_t, 256>(b83, "b83.txt");
-        nnet::load_weights_from_txt<weight87_t, 589824>(w87, "w87.txt");
+        //nnet::load_weights_from_txt<weight87_t, 589824>(w87, "w87.txt");
         nnet::load_weights_from_txt<bias87_t, 256>(b87, "b87.txt");
         nnet::load_weights_from_txt<model_default_t, 256>(s89, "s89.txt");
         nnet::load_weights_from_txt<model_default_t, 256>(b89, "b89.txt");
-        nnet::load_weights_from_txt<weight92_t, 589824>(w92, "w92.txt");
+        //nnet::load_weights_from_txt<weight92_t, 589824>(w92, "w92.txt");
         nnet::load_weights_from_txt<bias92_t, 256>(b92, "b92.txt");
         nnet::load_weights_from_txt<model_default_t, 256>(s94, "s94.txt");
         nnet::load_weights_from_txt<model_default_t, 256>(b94, "b94.txt");
-        nnet::load_weights_from_txt<weight96_t, 65536>(w96, "w96.txt");
+        //nnet::load_weights_from_txt<weight96_t, 65536>(w96, "w96.txt");
         nnet::load_weights_from_txt<bias96_t, 256>(b96, "b96.txt");
         nnet::load_weights_from_txt<model_default_t, 256>(s98, "s98.txt");
         nnet::load_weights_from_txt<model_default_t, 256>(b98, "b98.txt");

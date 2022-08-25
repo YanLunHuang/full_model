@@ -38,6 +38,35 @@ namespace nnet {
     size_t trace_type_size = sizeof(double);
 }
 
+template<class T, size_t SIZE>
+void load_weights_from_txt(T *w, const char* fname) {
+
+    std::string full_path = std::string(WEIGHTS_DIR) + "/" + std::string(fname);
+    std::ifstream infile(full_path.c_str(), std::ios::binary);
+
+    if (infile.fail()) {
+        std::cerr << "ERROR: file " << std::string(fname) << " does not exist" << std::endl;
+        exit(1);
+    }
+
+    std::string line;
+    if (std::getline(infile, line)) {
+        std::istringstream iss(line);
+        std::string token;
+
+        size_t i = 0;
+        while(std::getline(iss, token, ',')) {
+            std::istringstream(token) >> w[i];
+            i++;
+        }
+
+        if (SIZE != i) {
+            std::cerr << "ERROR: Expected " << SIZE << " values";
+            std::cerr << " but read only " << i << " values" << std::endl;
+        }
+    }
+}
+
 int main(int argc, char **argv)
 {
   //load input data from text file
@@ -83,9 +112,28 @@ int main(int argc, char **argv)
       hls::stream<input_t> tracks("tracks");
       nnet::copy_data_s<float, input_t, 2479, N_INPUT_1_1*N_INPUT_2_1>(in, tracks);
       hls::stream<result_t> layer102_out("layer102_out");
-
+      
+      //load weight file
+      weight25_t w25[196608];
+      weight30_t w30[524288];
+      weight38_t w38[1015808];
+      weight69_t w69[73728];
+      weight76_t w76[147456];
+      weight81_t w81[294912];
+      weight87_t w87[589824];
+      weight92_t w92[589824];
+      weight96_t w96[65536];
+      nnet::load_weights_from_txt<weight25_t, 196608>(w25, "w25.txt");
+      nnet::load_weights_from_txt<weight30_t, 524288>(w30, "w30.txt");
+      nnet::load_weights_from_txt<weight38_t, 1015808>(w38, "w38.txt");
+      nnet::load_weights_from_txt<weight69_t, 73728>(w69, "w69.txt");
+      nnet::load_weights_from_txt<weight76_t, 147456>(w76, "w76.txt");
+      nnet::load_weights_from_txt<weight81_t, 294912>(w81, "w81.txt");
+      nnet::load_weights_from_txt<weight87_t, 589824>(w87, "w87.txt");
+      nnet::load_weights_from_txt<weight92_t, 589824>(w92, "w92.txt");
+      nnet::load_weights_from_txt<weight96_t, 65536>(w96, "w96.txt");
       //hls-fpga-machine-learning insert top-level-function
-      myproject(em_barrel,scalars,tracks,layer102_out);
+      myproject(em_barrel,scalars,tracks,layer102_out,w25,w30,w38,w69,w76,w81,w87,w92,w96);
 
       if (e % CHECKPOINT == 0) {
         std::cout << "Predictions" << std::endl;
@@ -106,27 +154,6 @@ int main(int argc, char **argv)
     }
     fin.close();
     fpr.close();
-  } else {
-    std::cout << "INFO: Unable to open input/predictions file, using default input." << std::endl;
-
-    //hls-fpga-machine-learning insert zero
-    hls::stream<input29_t> em_barrel("em_barrel");
-    nnet::fill_zero_s<input29_t, N_INPUT_1_29*N_INPUT_2_29*N_INPUT_3_29>(em_barrel);
-    hls::stream<input13_t> scalars("scalars");
-    nnet::fill_zero_s<input13_t, N_INPUT_1_13>(scalars);
-    hls::stream<input_t> tracks("tracks");
-    nnet::fill_zero_s<input_t, N_INPUT_1_1*N_INPUT_2_1>(tracks);
-    hls::stream<result_t> layer102_out("layer102_out");
-
-    //hls-fpga-machine-learning insert top-level-function
-    myproject(em_barrel,scalars,tracks,layer102_out);
-
-    //hls-fpga-machine-learning insert output
-    nnet::print_result_s<result_t, N_LAYER_100>(layer102_out, std::cout, true);
-
-    //hls-fpga-machine-learning insert tb-output
-    nnet::print_result_s<result_t, N_LAYER_100>(layer102_out, fout);
-
   }
 
   fout.close();

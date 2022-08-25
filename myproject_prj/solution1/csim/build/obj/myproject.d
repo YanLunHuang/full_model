@@ -72,32 +72,28 @@ obj/myproject.o: ../../../../firmware/myproject.cpp \
  ../../../../firmware/weights/w16.h ../../../../firmware/weights/b16.h \
  ../../../../firmware/weights/s19.h ../../../../firmware/weights/b19.h \
  ../../../../firmware/weights/w20.h ../../../../firmware/weights/b20.h \
- ../../../../firmware/weights/w25.h ../../../../firmware/weights/b25.h \
- ../../../../firmware/weights/s27.h ../../../../firmware/weights/b27.h \
- ../../../../firmware/weights/w30.h ../../../../firmware/weights/b30.h \
+ ../../../../firmware/weights/b25.h ../../../../firmware/weights/s27.h \
+ ../../../../firmware/weights/b27.h ../../../../firmware/weights/b30.h \
  ../../../../firmware/weights/s33.h ../../../../firmware/weights/b33.h \
  ../../../../firmware/weights/s34.h ../../../../firmware/weights/b34.h \
  ../../../../firmware/weights/w36.h ../../../../firmware/weights/b36.h \
- ../../../../firmware/weights/w38.h ../../../../firmware/weights/b38.h \
- ../../../../firmware/weights/s40.h ../../../../firmware/weights/b40.h \
- ../../../../firmware/weights/w45.h ../../../../firmware/weights/b45.h \
- ../../../../firmware/weights/s48.h ../../../../firmware/weights/b48.h \
- ../../../../firmware/weights/w52.h ../../../../firmware/weights/b52.h \
- ../../../../firmware/weights/s54.h ../../../../firmware/weights/b54.h \
- ../../../../firmware/weights/w57.h ../../../../firmware/weights/b57.h \
- ../../../../firmware/weights/s60.h ../../../../firmware/weights/b60.h \
- ../../../../firmware/weights/w64.h ../../../../firmware/weights/b64.h \
- ../../../../firmware/weights/s66.h ../../../../firmware/weights/b66.h \
- ../../../../firmware/weights/w69.h ../../../../firmware/weights/b69.h \
+ ../../../../firmware/weights/b38.h ../../../../firmware/weights/s40.h \
+ ../../../../firmware/weights/b40.h ../../../../firmware/weights/w45.h \
+ ../../../../firmware/weights/b45.h ../../../../firmware/weights/s48.h \
+ ../../../../firmware/weights/b48.h ../../../../firmware/weights/w52.h \
+ ../../../../firmware/weights/b52.h ../../../../firmware/weights/s54.h \
+ ../../../../firmware/weights/b54.h ../../../../firmware/weights/w57.h \
+ ../../../../firmware/weights/b57.h ../../../../firmware/weights/s60.h \
+ ../../../../firmware/weights/b60.h ../../../../firmware/weights/w64.h \
+ ../../../../firmware/weights/b64.h ../../../../firmware/weights/s66.h \
+ ../../../../firmware/weights/b66.h ../../../../firmware/weights/b69.h \
  ../../../../firmware/weights/s72.h ../../../../firmware/weights/b72.h \
- ../../../../firmware/weights/w76.h ../../../../firmware/weights/b76.h \
- ../../../../firmware/weights/s78.h ../../../../firmware/weights/b78.h \
- ../../../../firmware/weights/w81.h ../../../../firmware/weights/b81.h \
+ ../../../../firmware/weights/b76.h ../../../../firmware/weights/s78.h \
+ ../../../../firmware/weights/b78.h ../../../../firmware/weights/b81.h \
  ../../../../firmware/weights/s83.h ../../../../firmware/weights/b83.h \
- ../../../../firmware/weights/w87.h ../../../../firmware/weights/b87.h \
- ../../../../firmware/weights/s89.h ../../../../firmware/weights/b89.h \
- ../../../../firmware/weights/w92.h ../../../../firmware/weights/b92.h \
+ ../../../../firmware/weights/b87.h ../../../../firmware/weights/s89.h \
+ ../../../../firmware/weights/b89.h ../../../../firmware/weights/b92.h \
  ../../../../firmware/weights/s94.h ../../../../firmware/weights/b94.h \
- ../../../../firmware/weights/w96.h ../../../../firmware/weights/b96.h \
- ../../../../firmware/weights/s98.h ../../../../firmware/weights/b98.h \
- ../../../../firmware/weights/w100.h ../../../../firmware/weights/b100.h
+ ../../../../firmware/weights/b96.h ../../../../firmware/weights/s98.h \
+ ../../../../firmware/weights/b98.h ../../../../firmware/weights/w100.h \
+ ../../../../firmware/weights/b100.h

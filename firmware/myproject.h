@@ -29,7 +29,16 @@
 // Prototype of top level function for C-synthesis
 void myproject(
     hls::stream<input29_t> &em_barrel, hls::stream<input13_t> &scalars, hls::stream<input_t> &tracks,
-    hls::stream<result_t> &layer102_out
+    hls::stream<result_t> &layer102_out,
+	weight25_t w25[196608],
+	weight30_t w30[524288],
+	weight38_t w38[1015808],
+	weight69_t w69[73728],
+	weight76_t w76[147456],
+	weight81_t w81[294912],
+	weight87_t w87[589824],
+	weight92_t w92[589824],
+	weight96_t w96[65536]
 );
 
 #endif
