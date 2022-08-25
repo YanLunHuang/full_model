@@ -111,7 +111,7 @@ void multiply_ss(
     //assert(input1_T::size == input2_T::size && input1_T::size == res_T::size);
 
     MultiplyLoop: for (int i = 0; i < CONFIG_T::n_elem; i++) {
-        #pragma HLS PIPELINE II=CONFIG_T::reuse_factor
+        #pragma HLS PIPELINE II=1
        
         input1_T in_data1 = data1.read();
         input2_T in_data2 = data2.read();
