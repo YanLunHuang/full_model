@@ -1,0 +1,15 @@
+Backend: Vivado
+ClockPeriod: 5
+HLSConfig:
+  Model:
+    Precision: ap_fixed<32,16>
+    ReuseFactor: 2000
+    Strategy: Resource
+IOType: io_stream
+InputData: null
+KerasModel: !keras_model 'dcalo_full/keras_model.h5'
+OutputDir: dcalo_full
+OutputPredictions: null
+Part: xczu9eg-ffvb1156-2-e
+ProjectName: myproject
+Stamp: 3340CE83
