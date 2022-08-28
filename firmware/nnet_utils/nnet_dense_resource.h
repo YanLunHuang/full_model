@@ -375,50 +375,39 @@ void dense_large_rf_gt_nin_rem0(
     res_T  res[CONFIG_T::n_out],
     typename CONFIG_T::weight_t weights[CONFIG_T::n_in*CONFIG_T::n_out],
     typename CONFIG_T::bias_t   biases[CONFIG_T::n_out]) {
-		//std::cout << "1" << std::endl;
     const int rufactor = MIN(CONFIG_T::reuse_factor, CONFIG_T::n_in * CONFIG_T::n_out);
-		//std::cout << "2" << std::endl;
     const int multfactor = MIN(CONFIG_T::n_in,CONFIG_T::reuse_factor);
-		//std::cout << "3" << std::endl;
     const int multiplier_limit = DIV_ROUNDUP(CONFIG_T::n_in*CONFIG_T::n_out, multfactor);
-		//std::cout << "4" << std::endl;
     const int block_factor = DIV_ROUNDUP(CONFIG_T::n_in*CONFIG_T::n_out, CONFIG_T::reuse_factor);
-		//std::cout << "5" << std::endl;
     const int multscale = multiplier_limit/CONFIG_T::n_out;
-		//std::cout << "6" << std::endl;
     const int nin = CONFIG_T::n_in;
-		//std::cout << "7" << std::endl;
     const int nout = CONFIG_T::n_out;
-		//std::cout << "8" << std::endl;
+
     assert((multiplier_limit % nout == 0 || rufactor >= nin) && "The current Reuse Factor is not allowed");
     assert((rufactor > nin && rufactor % nin == 0) && "This function is correct only for RF > N_IN && RF % N_IN == 0");
-		//std::cout << "9" << std::endl;
+
     #pragma HLS function_instantiate variable=biases
     //#pragma HLS RESOURCE variable=weights core=RAM_2P_BRAM Commenting out the deisgnation HLS seems to choose correctly
     #pragma HLS ARRAY_RESHAPE   variable=weights block factor=block_factor
     #pragma HLS ARRAY_PARTITION variable=biases complete
 
     typename CONFIG_T::accum_t acc[CONFIG_T::n_out];
-		//std::cout << "10" << std::endl;
     #pragma HLS ARRAY_PARTITION variable=acc complete
-	//std::cout << "----> InitAccum begin" << std::endl;
+
     InitAccum:
     for (int iacc = 0; iacc < nout; iacc++) {
         #pragma HLS UNROLL
         acc[iacc] = (typename CONFIG_T::accum_t) biases[iacc];
-		//std::cout << "----> biases[iacc]" <<  biases[iacc] << std::endl;
-		//std::cout << "----> acc[iacc]" << acc[iacc] << std::endl;
     }
-	//std::cout << "----> InitAccum finish" << std::endl;
+
     int w_index;
     int in_index = 0;
     int out_index;
     int outstep = 0;
     const int outscale = rufactor / nin;
-	//std::cout << "----> outscale " << outscale <<std::endl;
+
     int outidx[rufactor];
 
-	//std::cout << "----> ReuseLoop begin" << std::endl;
     ReuseLoop:
     for (int ir = 0; ir < rufactor; ir++) {
         #pragma HLS PIPELINE II=1

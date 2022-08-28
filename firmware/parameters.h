@@ -484,7 +484,7 @@ struct LeakyReLU_config35 : nnet::activ_config {
 struct config36_mult : nnet::dense_config {
     static const unsigned n_in = 100;
     static const unsigned n_out = 16;
-    static const unsigned reuse_factor = 1600;
+    static const unsigned reuse_factor = 100;
     static const unsigned strategy = nnet::resource;
     typedef model_default_t accum_t;
     typedef bias36_t bias_t;
@@ -509,7 +509,7 @@ struct config36 : nnet::conv2d_config {
     static const unsigned stride_width = 1;
     static const unsigned out_height = 56;
     static const unsigned out_width = 55;
-    static const unsigned reuse_factor = 1600;
+    static const unsigned reuse_factor = 100;
     static const unsigned n_zeros = 193;
     static const bool store_weights_in_bram = false;
     static const unsigned strategy = nnet::resource;
@@ -624,7 +624,7 @@ struct config109 : nnet::padding2d_config {
 struct config45_mult : nnet::dense_config {
     static const unsigned n_in = 144;
     static const unsigned n_out = 32;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 144;
     static const unsigned strategy = nnet::resource;
     typedef model_default_t accum_t;
     typedef bias45_t bias_t;
@@ -649,7 +649,7 @@ struct config45 : nnet::conv2d_config {
     static const unsigned stride_width = 1;
     static const unsigned out_height = 28;
     static const unsigned out_width = 27;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 144;
     static const unsigned n_zeros = 666;
     static const bool store_weights_in_bram = false;
     static const unsigned strategy = nnet::resource;
@@ -727,7 +727,7 @@ struct config110 : nnet::padding2d_config {
 struct config52_mult : nnet::dense_config {
     static const unsigned n_in = 288;
     static const unsigned n_out = 32;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 288;
     static const unsigned strategy = nnet::resource;
     typedef model_default_t accum_t;
     typedef bias52_t bias_t;
@@ -752,7 +752,7 @@ struct config52 : nnet::conv2d_config {
     static const unsigned stride_width = 1;
     static const unsigned out_height = 28;
     static const unsigned out_width = 27;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 288;
     static const unsigned n_zeros = 1868;
     static const bool store_weights_in_bram = false;
     static const unsigned strategy = nnet::resource;
@@ -833,7 +833,7 @@ struct config111 : nnet::padding2d_config {
 struct config57_mult : nnet::dense_config {
     static const unsigned n_in = 288;
     static const unsigned n_out = 64;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 288;
     static const unsigned strategy = nnet::resource;
     typedef model_default_t accum_t;
     typedef bias57_t bias_t;
@@ -858,7 +858,7 @@ struct config57 : nnet::conv2d_config {
     static const unsigned stride_width = 1;
     static const unsigned out_height = 14;
     static const unsigned out_width = 13;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 288;
     static const unsigned n_zeros = 3818;
     static const bool store_weights_in_bram = false;
     static const unsigned strategy = nnet::resource;
@@ -936,7 +936,7 @@ struct config112 : nnet::padding2d_config {
 struct config64_mult : nnet::dense_config {
     static const unsigned n_in = 576;
     static const unsigned n_out = 64;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 576;
     static const unsigned strategy = nnet::resource;
     typedef model_default_t accum_t;
     typedef bias64_t bias_t;
@@ -961,7 +961,7 @@ struct config64 : nnet::conv2d_config {
     static const unsigned stride_width = 1;
     static const unsigned out_height = 14;
     static const unsigned out_width = 13;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 576;
     static const unsigned n_zeros = 10249;
     static const bool store_weights_in_bram = false;
     static const unsigned strategy = nnet::resource;
@@ -1042,7 +1042,7 @@ struct config113 : nnet::padding2d_config {
 struct config69_mult : nnet::dense_config {
     static const unsigned n_in = 576;
     static const unsigned n_out = 128;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 576;
     static const unsigned strategy = nnet::resource;
     typedef model_default_t accum_t;
     typedef bias69_t bias_t;
@@ -1067,7 +1067,7 @@ struct config69 : nnet::conv2d_config {
     static const unsigned stride_width = 1;
     static const unsigned out_height = 7;
     static const unsigned out_width = 6;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 576;
     static const unsigned n_zeros = 20705;
     static const bool store_weights_in_bram = false;
     static const unsigned strategy = nnet::resource;
@@ -1145,7 +1145,7 @@ struct config114 : nnet::padding2d_config {
 struct config76_mult : nnet::dense_config {
     static const unsigned n_in = 1152;
     static const unsigned n_out = 128;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 1152;
     static const unsigned strategy = nnet::resource;
     typedef model_default_t accum_t;
     typedef bias76_t bias_t;
@@ -1170,7 +1170,7 @@ struct config76 : nnet::conv2d_config {
     static const unsigned stride_width = 1;
     static const unsigned out_height = 7;
     static const unsigned out_width = 6;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 1152;
     static const unsigned n_zeros = 55977;
     static const bool store_weights_in_bram = false;
     static const unsigned strategy = nnet::resource;
@@ -1251,7 +1251,7 @@ struct config115 : nnet::padding2d_config {
 struct config81_mult : nnet::dense_config {
     static const unsigned n_in = 1152;
     static const unsigned n_out = 256;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 1152;
     static const unsigned strategy = nnet::resource;
     typedef model_default_t accum_t;
     typedef bias81_t bias_t;
@@ -1276,7 +1276,7 @@ struct config81 : nnet::conv2d_config {
     static const unsigned stride_width = 1;
     static const unsigned out_height = 3;
     static const unsigned out_width = 3;
-    static const unsigned reuse_factor = 2304;
+    static const unsigned reuse_factor = 1152;
     static const unsigned n_zeros = 113169;
     static const bool store_weights_in_bram = false;
     static const unsigned strategy = nnet::resource;
