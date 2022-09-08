@@ -6,3 +6,4 @@
 ### I adjusted the reuse factor to use the first dense.
 ### The model can be synthesized successfully.
 ### The synthesis time is about 3.5 hours.
+### I removed the parameter (size) in function declaration, and modify parameter.h
