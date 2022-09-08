@@ -81,7 +81,6 @@ void relu_ss(hls::stream<data_T> &data, hls::stream<res_T> &res) {
 
         data_T in_data = data.read();
         res_T out_data;
-        #pragma HLS DATA_PACK variable=out_data
         
         if (in_data > 0) out_data = in_data;
         else out_data = 0;

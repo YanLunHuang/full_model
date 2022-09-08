@@ -155,7 +155,8 @@ struct LeakyReLU_config4 : nnet::activ_config {
 struct config5 : nnet::mask_track_config {	 
     static const unsigned n_in = N_INPUT_1_1*N_INPUT_2_1;
     static const unsigned height = 57;
-    static const unsigned width = 6;	
+    static const unsigned width = 6;
+    static const unsigned n_chan = 6;
 };
 
 // conv1d_2
@@ -249,10 +250,12 @@ struct config11 : nnet::merge_config {
 };
 
 // sum1d
-struct config12 : nnet::sum1d_config {	 
+struct config12 : nnet::sum1d_config {
     static const unsigned n_in = N_OUTPUTS_8*N_FILT_8;
     static const unsigned height = 57;
-    static const unsigned width = 128;	
+    static const unsigned width = 128;
+    static const unsigned n_chan = 128;
+    static const unsigned n_filt = 128;
 };
 
 // dense_1
@@ -567,7 +570,8 @@ struct config41 : nnet::slice_tensor1d_config {
 struct config42 : nnet::film_config {
     static const unsigned height = 56;
     static const unsigned width = 55;
-    static const unsigned n_chan = 16;
+    static const unsigned n_chan1 = 16;
+    static const unsigned n_chan2 = 32;
     static const unsigned n_inp1 = OUT_HEIGHT_36*OUT_WIDTH_36*N_FILT_36;
     static const unsigned n_inp2 = N_OUTPUTS_1_41;
 };
@@ -696,7 +700,8 @@ struct config49 : nnet::slice_tensor1d_config {
 struct config50 : nnet::film_config {
     static const unsigned height = 28;
     static const unsigned width = 27;
-    static const unsigned n_chan = 32;
+    static const unsigned n_chan1 = 32;
+    static const unsigned n_chan2 = 64;
     static const unsigned n_inp1 = OUT_HEIGHT_45*OUT_WIDTH_45*N_FILT_45;
     static const unsigned n_inp2 = N_OUTPUTS_1_49;
 };
@@ -905,7 +910,8 @@ struct config61 : nnet::slice_tensor1d_config {
 struct config62 : nnet::film_config {
     static const unsigned height = 14;
     static const unsigned width = 13;
-    static const unsigned n_chan = 64;
+    static const unsigned n_chan1 = 64;
+    static const unsigned n_chan2 = 128;
     static const unsigned n_inp1 = OUT_HEIGHT_57*OUT_WIDTH_57*N_FILT_57;
     static const unsigned n_inp2 = N_OUTPUTS_1_61;
 };
@@ -1114,7 +1120,8 @@ struct config73 : nnet::slice_tensor1d_config {
 struct config74 : nnet::film_config {
     static const unsigned height = 7;
     static const unsigned width = 6;
-    static const unsigned n_chan = 128;
+    static const unsigned n_chan1 = 128;
+    static const unsigned n_chan2 = 256;
     static const unsigned n_inp1 = OUT_HEIGHT_69*OUT_WIDTH_69*N_FILT_69;
     static const unsigned n_inp2 = N_OUTPUTS_1_73;
 };
@@ -1316,7 +1323,8 @@ struct config84 : nnet::slice_tensor1d_config {
 struct config85 : nnet::film_config {
     static const unsigned height = 3;
     static const unsigned width = 3;
-    static const unsigned n_chan = 256;
+    static const unsigned n_chan1 = 256;
+    static const unsigned n_chan2 = 512;
     static const unsigned n_inp1 = OUT_HEIGHT_81*OUT_WIDTH_81*N_FILT_81;
     static const unsigned n_inp2 = N_OUTPUTS_1_84;
 };

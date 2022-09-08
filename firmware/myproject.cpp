@@ -133,7 +133,7 @@ void myproject(
 
     hls::stream<layer117_t> layer117_out("layer117_out");
     #pragma HLS STREAM variable=layer117_out depth=57
-    nnet::pointwise_conv_1d_cl_ss<layer103_t, 6, layer117_t, 128, config117>(layer103_cpy1, layer117_out, w117, b117); // conv1d_1
+    nnet::pointwise_conv_1d_cl_ss<layer103_t, layer117_t, config117>(layer103_cpy1, layer117_out, w117, b117); // conv1d_1
 
     hls::stream<layer4_t> layer4_out("layer4_out");
     #pragma HLS STREAM variable=layer4_out depth=57
@@ -145,11 +145,11 @@ void myproject(
 
     hls::stream<layer118_t> layer118_out("layer118_out");
     #pragma HLS STREAM variable=layer118_out depth=57
-    nnet::pointwise_conv_1d_cl_ss<layer4_t, 128, layer118_t, 128, config118>(layer4_out, layer118_out, w118, b118); // conv1d_2
+    nnet::pointwise_conv_1d_cl_ss<layer4_t, layer118_t, config118>(layer4_out, layer118_out, w118, b118); // conv1d_2
 
     hls::stream<layer119_t> layer119_out("layer119_out");
     #pragma HLS STREAM variable=layer119_out depth=57
-    nnet::pointwise_conv_1d_cl_ss<layer5_t, 1, layer119_t, 128, config119>(layer5_out, layer119_out, w119, b119); // conv1d
+    nnet::pointwise_conv_1d_cl_ss<layer5_t, layer119_t, config119>(layer5_out, layer119_out, w119, b119); // conv1d
 
     hls::stream<layer10_t> layer10_out("layer10_out");
     #pragma HLS STREAM variable=layer10_out depth=57
@@ -161,7 +161,7 @@ void myproject(
 
     hls::stream<layer12_t> layer12_out("layer12_out");
     #pragma HLS STREAM variable=layer12_out depth=1
-    nnet::sum1d_ss<layer11_t, 128, layer12_t, 128, config12>(layer11_out, layer12_out); // sum1d
+    nnet::sum1d_ss<layer11_t, layer12_t, config12>(layer11_out, layer12_out); // sum1d
 
     hls::stream<layer14_t> layer14_out("layer14_out");
     #pragma HLS STREAM variable=layer14_out depth=1
@@ -255,7 +255,7 @@ void myproject(
 
     hls::stream<layer42_t> layer42_out("layer42_out");
     #pragma HLS STREAM variable=layer42_out depth=3080
-    nnet::film_ss<layer40_t, 16, layer41_t, 32, layer42_t, config42>(layer40_out, layer41_out, layer42_out); // fi_lm
+    nnet::film_ss<layer40_t, layer41_t, layer42_t, config42>(layer40_out, layer41_out, layer42_out); // fi_lm
 
     hls::stream<layer43_t> layer43_out("layer43_out");
     #pragma HLS STREAM variable=layer43_out depth=3080
@@ -293,7 +293,7 @@ void myproject(
 
     hls::stream<layer50_t> layer50_out("layer50_out");
     #pragma HLS STREAM variable=layer50_out depth=756
-    nnet::film_ss<layer48_t, 32, layer49_t, 64, layer50_t, config50>(layer48_out, layer49_out, layer50_out); // fi_lm_1
+    nnet::film_ss<layer48_t, layer49_t, layer50_t, config50>(layer48_out, layer49_out, layer50_out); // fi_lm_1
 
     hls::stream<layer51_t> layer51_out("layer51_out");
     #pragma HLS STREAM variable=layer51_out depth=756
@@ -347,7 +347,7 @@ void myproject(
 
     hls::stream<layer62_t> layer62_out("layer62_out");
     #pragma HLS STREAM variable=layer62_out depth=182
-    nnet::film_ss<layer60_t, 64, layer61_t, 128, layer62_t, config62>(layer60_out, layer61_out, layer62_out); // fi_lm_2
+    nnet::film_ss<layer60_t, layer61_t, layer62_t, config62>(layer60_out, layer61_out, layer62_out); // fi_lm_2
 
     hls::stream<layer63_t> layer63_out("layer63_out");
     #pragma HLS STREAM variable=layer63_out depth=182
@@ -401,7 +401,7 @@ void myproject(
 
     hls::stream<layer74_t> layer74_out("layer74_out");
     #pragma HLS STREAM variable=layer74_out depth=42
-    nnet::film_ss<layer72_t, 128, layer73_t, 256, layer74_t, config74>(layer72_out, layer73_out, layer74_out); // fi_lm_3
+    nnet::film_ss<layer72_t, layer73_t, layer74_t, config74>(layer72_out, layer73_out, layer74_out); // fi_lm_3
 
     hls::stream<layer75_t> layer75_out("layer75_out");
     #pragma HLS STREAM variable=layer75_out depth=42
@@ -445,7 +445,7 @@ void myproject(
 
     hls::stream<layer85_t> layer85_out("layer85_out");
     #pragma HLS STREAM variable=layer85_out depth=9
-    nnet::film_ss<layer83_t, 256, layer84_t, 512, layer85_t, config85>(layer83_out, layer84_out, layer85_out); // fi_lm_4
+    nnet::film_ss<layer83_t, layer84_t, layer85_t, config85>(layer83_out, layer84_out, layer85_out); // fi_lm_4
 
     hls::stream<layer86_t> layer86_out("layer86_out");
     #pragma HLS STREAM variable=layer86_out depth=9

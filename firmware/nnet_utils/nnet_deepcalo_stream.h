@@ -64,7 +64,7 @@ void film_s(
 }
 
 
-template<class input1_T, size_t SIZE1, class input2_T, size_t SIZE2, class res_T, typename CONFIG_T>
+template<class input1_T, class input2_T, class res_T, typename CONFIG_T>
 void film_ss(
     hls::stream<input1_T> &data1,
     hls::stream<input2_T> &data2,
@@ -74,18 +74,18 @@ void film_ss(
 	input2_T scalar_gamma;
 	res_T out_data;
 	
-	input2_T in_data2[SIZE2];
-	for (int i = 0; i < SIZE2; i++) {
+	input2_T in_data2[CONFIG_T::n_chan2];
+	for (int i = 0; i < CONFIG_T::n_chan2; i++) {
 		#pragma HLS PIPELINE II=1
 		in_data2[i] = data2.read();
 	}
 	
-	for (int i = 0; i < CONFIG_T::n_inp1/SIZE1; i++) {
+	for (int i = 0; i < CONFIG_T::n_inp1/CONFIG_T::n_chan1; i++) {
 		
-		FilmPack: for (int k = 0; k < SIZE1; k++) {
+		FilmPack: for (int k = 0; k < CONFIG_T::n_chan1; k++) {
 			#pragma HLS PIPELINE II=1
 			input1_T in_data1 = data1.read();
-			out_data = in_data1*(in_data2[k]+1) + in_data2[SIZE1+k];
+			out_data = in_data1*(in_data2[k]+1) + in_data2[CONFIG_T::n_chan1+k];
 			res.write(out_data);
 		}
 	}
@@ -127,9 +127,9 @@ void mask_track_ss(
         hls::stream<res_T> &res) {
         
         res_T out_data;
-        MaskLoop1: for (unsigned i = 0; i < CONFIG_T::n_in/6; i++) {
-            #pragma HLS PIPELINE II=1
-            MaskLoop2: for (unsigned k = 0; k < 6; k++){
+        MaskLoop1: for (unsigned i = 0; i < CONFIG_T::n_in/CONFIG_T::n_chan; i++) {
+            #pragma HLS PIPELINE II=CONFIG_T::n_chan
+            MaskLoop2: for (unsigned k = 0; k < CONFIG_T::n_chan; k++){
                 data_T in_data = data.read();
                 if(in_data==0){
                     out_data = 0;
@@ -167,27 +167,27 @@ void sum1d(
 }
 
 
-template<class data_T, size_t SIZE1, class res_T,  size_t SIZE2, typename CONFIG_T>
+template<class data_T, class res_T, typename CONFIG_T>
 void sum1d_ss(
         hls::stream<data_T> &data,
         hls::stream<res_T> &res) {
 
-    res_T out_data[SIZE2];
+    res_T out_data[CONFIG_T::n_filt];
 
-    for (unsigned i = 0; i < SIZE2; i++) out_data[i] = 0;
+    for (unsigned i = 0; i < CONFIG_T::n_filt; i++) out_data[i] = 0;
 
-    for (unsigned i = 0; i < CONFIG_T::n_in/SIZE1; i++) {
+    for (unsigned i = 0; i < CONFIG_T::n_in/CONFIG_T::n_chan; i++) {
 
-        for (unsigned k = 0; k < SIZE1; k++){
+        for (unsigned k = 0; k < CONFIG_T::n_chan; k++){
             #pragma HLS PIPELINE II=1
             data_T in_data = data.read();
-                if (SIZE2 == 1) 
+                if (CONFIG_T::n_filt == 1) 
                     out_data[0] = out_data[0] + in_data;
                 else                  
                     out_data[k] = out_data[k] + in_data;
         }
     }
-    for (unsigned i = 0; i < SIZE2; i++){
+    for (unsigned i = 0; i < CONFIG_T::n_filt; i++){
         #pragma HLS PIPELINE II=1
         res.write(out_data[i]);
     }

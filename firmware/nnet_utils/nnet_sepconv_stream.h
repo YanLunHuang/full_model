@@ -172,8 +172,7 @@ void pointwise_mult_buffer(
     res_stream.write(res_pack);
 }
 
-template<class data_T, size_t SIZE1 , class res_T, size_t SIZE2, typename CONFIG_T>
-//template<class data_T, class res_T, typename CONFIG_T>
+template<class data_T, class res_T, typename CONFIG_T>
 void pointwise_mult_buffer_ss(
     hls::stream<data_T> &data_pack,
     hls::stream<res_T> &res_stream,
